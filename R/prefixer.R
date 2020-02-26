@@ -301,8 +301,8 @@ del:hover {
         x$end[x$numrow == row] <- x$end[x$numrow == row] -11
         script_funs_r$x <- x
         } else if (script_funs_r$x$package[fun$counter] == "deletion"){
-          x$start[x$numrow == row] <- x$start[x$numrow == row] -11 #take away number of characters in <ins></ins>
-          x$end[x$numrow == row] <- x$end[x$numrow == row] -11
+          x$start[x$numrow == row] <- x$start[x$numrow == row] - nchar(script_funs_r$x$funs[fun$counter]) #take away number of characters in script_funs #take away number of characters in <ins></ins>
+          x$end[x$numrow == row] <- x$end[x$numrow == row] - nchar(script_funs_r$x$funs[fun$counter])
           script_funs_r$x <- x
         }
       }
