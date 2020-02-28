@@ -14,7 +14,7 @@
 #'  word = "head"
 #' )
 find_position <- function(script, word) {
-  script <- str_split(string = script, pattern = "\\n", simplify = TRUE)
+  # script <- str_split(string = script, pattern = "\\n", simplify = TRUE)
    # pos <- str_locate_all(string = script, pattern = paste0("(?<![[:alnum:]\\._])", word, "(?![[:alnum:]\\._])"))
   pos <- str_locate_all(string = script, pattern = glue::glue("<{word}>(.*?)</{word}>"))
   num_row <- unlist(lapply(pos, nrow))
@@ -205,7 +205,9 @@ get_script_funs <- function(script, filter_context = TRUE
     # packages_funs <- data.frame(package = c("insertion", "deletion"),
     #                             funs=c("ins", "del"), stringsAsFactors = FALSE)
   # script_funs <- merge(x = packages_funs, y = extract_words(script = script), by.x = "funs", by.y = "word", all.x = FALSE)
-  script_funs <- cbind(packages_funs, extract_words(script = script))
+     extract <- extract_words(script = script)
+     extract <- extract[order(extract$numrow, extract$start),]
+  script_funs <- cbind(packages_funs, extract)
      # script_funs$ns_order <- match(x = script_funs$package, table = .packages())
   script_funs$ns_order <- match(x = script_funs$package, table = packages_funs$package)
   script_funs <- script_funs[order(script_funs$numrow, script_funs$start, script_funs$ns_order), ]

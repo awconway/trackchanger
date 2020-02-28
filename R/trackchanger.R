@@ -1,8 +1,7 @@
-#' @title Shiny Gadget to interactively prefix function in a script
+#' @title Shiny Gadget to interactively accept or reject chaanges in rmarkdown
 #'
-#' @description Open a script, load package(s) used in that script, then launch this addin via RStudio menu.
-#' It will propose to prefix function with their package (if a function is in several packages, a choice can be made),
-#' validate the suggested prefix or skip to the next function.
+#' @description Open a rmd document, then launch this addin via RStudio menu.
+#' It will propose to accept or reject the change or skip to the next function.
 #'
 #' @export
 #'
@@ -18,14 +17,14 @@
 #' @examples
 #' \dontrun{
 #'
-#' prefixer()
+#' trackchanger()
 #'
 #' }
-prefixer <- function() {
+trackchanger <- function() {
   
   script <- rstudioapi::getSourceEditorContext()$contents
   if (sum(nchar(script), na.rm = TRUE) == 0) {
-    warning("It seems there are nothing to prefix...")
+    warning("It seems there are nothing to trackchange...")
     return(invisible())
   }
   
