@@ -7,3 +7,8 @@ Name: Highlight
 Description: Tracks highlighting at cursor position
 Binding: trackHighlight
 Interactive: false
+
+Name: Add Comment
+Description: Adds hover comment at cursor position
+Binding: add_comment
+Interactive: false
