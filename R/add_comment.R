@@ -8,12 +8,12 @@ add_comment <- function() {
   
   # get cursor position
   docPos <- con$selection[[1]]$range$end
-  
+  text <- '<div class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext"></span></div>'
   # Add markup
-  rstudioapi::insertText('<div class="comment"><span class="fas fa-comments fa-2x" style="color: red;"></span><span class="commenttext"></span></div>', 
+  rstudioapi::insertText(text, 
                          id = con$id)
   
   # move cursor
-  docPosNew <- docPos + c(0, 110)
+  docPosNew <- docPos + c(0, 108)
   rstudioapi::setCursorPosition(docPosNew, id = con$id)
 }
