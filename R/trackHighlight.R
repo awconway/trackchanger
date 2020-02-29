@@ -14,6 +14,6 @@ trackHighlight <- function() {
   rstudioapi::insertText(paste0('<div class="comment"><mark>', selection, '</mark><span class="commenttext"></span></div>'),
                          id = con$id)
   # Move cursor
-  docPosNew <- docPos + c(0, 56)
+  docPosNew <- docPos + c(0, 60)
   rstudioapi::setCursorPosition(docPosNew, id = con$id)
 }
