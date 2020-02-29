@@ -11,9 +11,9 @@ trackHighlight <- function() {
   
   # Add markup
   docPos <- con$selection[[1]]$range$end
-  rstudioapi::insertText(paste0('<div class="comment"><mark>', selection, '</mark><span class="commenttext"</span></div>'),
+  rstudioapi::insertText(paste0('<div class="comment"><mark>', selection, '</mark><span class="commenttext"></span></div>'),
                          id = con$id)
   # Move cursor
-  docPosNew <- docPos + c(0, 9)
+  docPosNew <- docPos + c(0, 56)
   rstudioapi::setCursorPosition(docPosNew, id = con$id)
 }

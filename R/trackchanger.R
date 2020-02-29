@@ -42,7 +42,41 @@ trackchanger <- function() {
   
   ui <- miniPage(
     tags$head(tags$style(".highlight-context {color: red !important;}")),
-    tags$head(tags$style("ins, del{
+    tags$head(tags$style('.comment {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.comment .commenttext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #ffe392;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+
+.comment .commenttext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #ffe392 transparent transparent;
+}
+
+.comment:hover .commenttext {
+    visibility: visible;
+}
+ins, del{
   text-decoration: none;
   display: inline-block;
   padding: 0 .3em;
@@ -86,7 +120,7 @@ del:hover {
   top: unset;
   height: unset;
   transition: padding-left ease .3s, padding-right ease .3s, color ease .7s;
-}")),
+}')),
     tags$div(
       class = "gadget-title", style = "background-color: rgb(16,34,70);",
       tags$h1("trackchanger", style = "font-weight: bold; color: #FFF;"),

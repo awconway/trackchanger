@@ -38,8 +38,9 @@ get_package_funs <- function(script) {
     dplyr::mutate(package = dplyr::case_when(
                           str_detect(funs, "<ins>(.*?)</ins>") ~ "insertion",
                           str_detect(funs, "<del>(.*?)</del>") ~ "deletion"
-                                          )
-                  )
+                                          ) 
+                  )%>% 
+    dplyr::filter(!is.na(package))
 }
   
   
