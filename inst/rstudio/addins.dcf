@@ -1,0 +1,4 @@
+Name: Record Changes
+Description: Shiny UI for editing, and recording text changes in the html format.
+Binding: trackChangesViewer
+Interactive: true
