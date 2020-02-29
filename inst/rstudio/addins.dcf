@@ -2,3 +2,8 @@ Name: Record Changes
 Description: Shiny UI for editing, and recording text changes in the html format.
 Binding: trackChangesViewer
 Interactive: true
+
+Name: Highlight
+Description: Tracks highlighting at cursor position
+Binding: trackHighlight
+Interactive: false
