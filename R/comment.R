@@ -7,7 +7,7 @@
 #' @export
 #' 
 comment <- function(comment){
-  tippy::tippy("<span class='fas fa-comments' style='color: red;'></span>", 
+  tippy::tippy("<span class='fas fa-comments fa-3x' style='color: red;'></span>", 
                comment, 
                allowHTMl= TRUE, 
                size = "large")
