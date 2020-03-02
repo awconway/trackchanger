@@ -74,10 +74,10 @@ trackSubstitute <- function() {
   
   # Add markup
   docPos <- con$selection[[1]]$range$end
-  rstudioapi::insertText(paste0("{~~", selection, "~>~~}"),
+  rstudioapi::insertText(paste0("<del>", selection, "</del><ins></ins>"),
                          id = con$id)
   
   # Move cursor
-  docPosNew <- docPos + c(0, 5)
+  docPosNew <- docPos + c(0, 16)
   rstudioapi::setCursorPosition(docPosNew, id = con$id)
 }
