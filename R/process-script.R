@@ -12,14 +12,14 @@
 #'  word = "head"
 #' )
 find_position <- function(script) {
-  pos <- stringr::str_locate_all(string = script, pattern = '<ins>(.*?)</ins>|<del>(.*?)</del>|<div class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">(.*?)</span></div>')
+  pos <- stringr::str_locate_all(string = script, pattern = '<ins>(.*?)</ins>|<del>(.*?)</del>|<span class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">(.*?)</span></span>')
   
   num_row <- unlist(lapply(pos, nrow))
   pos <- do.call("rbind", pos)
   pos <- as.data.frame(pos)
   pos$numrow <- rep(which(num_row > 0), num_row[num_row > 0])
   
-  changes_tags <- stringr::str_extract_all(string = script, pattern = '<ins>(.*?)</ins>|<del>(.*?)</del>|<div class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">(.*?)</span></div>')
+  changes_tags <- stringr::str_extract_all(string = script, pattern = '<ins>(.*?)</ins>|<del>(.*?)</del>|<span class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">(.*?)</span></span>')
   changes_tags <- unique(unlist(changes_tags))
   df <- data.frame(changes_tags,
                    stringsAsFactors = FALSE)
@@ -27,13 +27,13 @@ find_position <- function(script) {
     dplyr::mutate(change_type = dplyr::case_when(
       stringr::str_detect(changes_tags, "<ins>(.*?)</ins>") ~ "insertion",
       stringr::str_detect(changes_tags, "<del>(.*?)</del>") ~ "deletion",
-      stringr::str_detect(changes_tags, '<div class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">(.*?)</span></div>') ~ "comment"
+      stringr::str_detect(changes_tags, '<span class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">(.*?)</span></span>') ~ "comment"
     ) 
     )
   
   df <-  df %>% 
     dplyr::mutate(changes = stringr::str_remove_all(changes_tags, 
-                                           pattern = '<ins>|</ins>|<del>|</del>|<div class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">|</span></div>')) #removes ins and del tags
+                                           pattern = '<ins>|</ins>|<del>|</del>|<span class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext">|</span></span>')) #removes ins and del tags
 
   df <- df %>% 
     dplyr::mutate(changes_context = script[pos$numrow])
