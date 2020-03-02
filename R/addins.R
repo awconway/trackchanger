@@ -53,7 +53,7 @@ trackDelete <- function() {
   
   # Add markup
   rstudioapi::insertText(location = startPos, "<del>", id = con$id)
-  rstudioapi::insertText(location = endPos + c(0, 3), "</del>",
+  rstudioapi::insertText(location = endPos + c(0, 5), "</del>",
                          id = con$id)
   
   # move cursor
