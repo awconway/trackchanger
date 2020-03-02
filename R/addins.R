@@ -14,7 +14,7 @@ trackComment <- function() {
                          id = con$id)
   
   # move cursor
-  docPosNew <- docPos + c(0, 108)
+  docPosNew <- docPos + c(0, 109)
   rstudioapi::setCursorPosition(docPosNew, id = con$id)
 }
 
