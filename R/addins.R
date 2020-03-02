@@ -8,7 +8,7 @@ trackComment <- function() {
   
   # get cursor position
   docPos <- con$selection[[1]]$range$end
-  text <- '<div class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext"></span></div>'
+  text <- '<span class="comment"><span class="fas fa-comments" style="color: #ffe392;"></span><span class="commenttext"></span></span>'
   # Add markup
   rstudioapi::insertText(text, 
                          id = con$id)
