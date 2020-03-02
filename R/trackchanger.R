@@ -22,7 +22,7 @@ trackchanger <- function() {
   
   
   
-  script_changes <- trackchanger::get_script_changes(script)
+  script_changes <- get_script_changes(script)
   
   if (nrow(script_changes) == 0) {
     warning("It seems there are nothing to track change...")
